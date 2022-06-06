@@ -31,7 +31,7 @@ type ResourcequotaAutoscalingSpec struct {
 
 	// Foo is an example field of ResourcequotaAutoscaling. Edit resourcequotaautoscaling_types.go to remove/update
 	ScaleTargetRef *ScaleTargetRef `json:"scaleTargetRef,omitempty"`
-	MaxScaleCount int `json:"maxScaleCount,omitempty"`
+	MaxScaleCount int              `json:"maxScaleCount,omitempty"`
 	ScaleResources *ScaleResources `json:"scaleResources,omitempty"`
 }
 
@@ -39,10 +39,10 @@ type ResourcequotaAutoscalingSpec struct {
 type ResourcequotaAutoscalingStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	Message string `json:"message,omitempty"`
-	Status bool `json:"status,omitempty"`
+	Message string                 `json:"message,omitempty"`
+	Status bool                    `json:"status,omitempty"`
 	BeforeIncrease *BeforeIncrease `json:"beforeIncrease,omitempty"`
-	AfterIncrease *AfterIncrease `json:"afterIncrease,omitempty"`
+	AfterIncrease *AfterIncrease   `json:"afterIncrease,omitempty"`
 
 }
 
@@ -83,8 +83,8 @@ type AfterIncrease struct {
 }
 
 type BeforeIncrease struct {
-	 CPU uint64 `json:"cpu,omitempty"`
-	 Memory uint64 `json:"memory,omitempty"`
+	CPU uint64 `json:"cpu,omitempty"`
+	Memory uint64 `json:"memory,omitempty"`
 	TimeStamp time.Duration `json:"timeStamp,omitempty"`
 }
 

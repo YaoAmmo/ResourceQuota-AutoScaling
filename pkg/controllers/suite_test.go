@@ -17,6 +17,7 @@ limitations under the License.
 package controllers
 
 import (
+	"my.demo/ResourceQuota-AutoScaling/pkg/api/v1alpha1"
 	"path/filepath"
 	"testing"
 
@@ -30,7 +31,6 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	demodevopsiov1alpha1 "my.demo/ResourceQuota-AutoScaling/api/v1alpha1"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -62,7 +62,7 @@ var _ = BeforeSuite(func() {
 	Expect(err).NotTo(HaveOccurred())
 	Expect(cfg).NotTo(BeNil())
 
-	err = demodevopsiov1alpha1.AddToScheme(scheme.Scheme)
+	err = v1alpha1.AddToScheme(scheme.Scheme)
 	Expect(err).NotTo(HaveOccurred())
 
 	//+kubebuilder:scaffold:scheme

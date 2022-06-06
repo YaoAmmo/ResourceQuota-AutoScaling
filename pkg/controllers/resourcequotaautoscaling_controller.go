@@ -18,13 +18,12 @@ package controllers
 
 import (
 	"context"
+	"my.demo/ResourceQuota-AutoScaling/pkg/api/v1alpha1"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
-
-	demodevopsiov1alpha1 "my.demo/ResourceQuota-AutoScaling/api/v1alpha1"
 )
 
 // ResourcequotaAutoscalingReconciler reconciles a ResourcequotaAutoscaling object
@@ -57,6 +56,6 @@ func (r *ResourcequotaAutoscalingReconciler) Reconcile(ctx context.Context, req 
 // SetupWithManager sets up the controller with the Manager.
 func (r *ResourcequotaAutoscalingReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&demodevopsiov1alpha1.ResourcequotaAutoscaling{}).
+		For(&v1alpha1.ResourcequotaAutoscaling{}).
 		Complete(r)
 }
