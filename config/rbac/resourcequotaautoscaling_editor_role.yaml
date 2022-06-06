@@ -1,0 +1,24 @@
+# permissions for end users to edit resourcequotaautoscalings.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: resourcequotaautoscaling-editor-role
+rules:
+- apiGroups:
+  - demo.devops.io.my.demo
+  resources:
+  - resourcequotaautoscalings
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - demo.devops.io.my.demo
+  resources:
+  - resourcequotaautoscalings/status
+  verbs:
+  - get

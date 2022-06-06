@@ -1,0 +1,16 @@
+domain: my.demo
+layout:
+- go.kubebuilder.io/v3
+projectName: resourcequota-autoscaling
+repo: my.demo/ResourceQuota-AutoScaling
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: my.demo
+  group: demo.devops.io
+  kind: ResourcequotaAutoscaling
+  path: my.demo/ResourceQuota-AutoScaling/api/v1alpha1
+  version: v1alpha1
+version: "3"

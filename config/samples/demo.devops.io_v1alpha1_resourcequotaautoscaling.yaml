@@ -1,0 +1,6 @@
+apiVersion: demo.devops.io.my.demo/v1alpha1
+kind: ResourcequotaAutoscaling
+metadata:
+  name: resourcequotaautoscaling-sample
+spec:
+  # TODO(user): Add fields here
