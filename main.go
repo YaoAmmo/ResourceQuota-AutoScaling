@@ -18,6 +18,8 @@ package main
 
 import (
 	"flag"
+	"my.demo/ResourceQuota-AutoScaling/pkg/api/v1alpha1"
+	controllers2 "my.demo/ResourceQuota-AutoScaling/pkg/controllers"
 	"os"
 
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
@@ -30,9 +32,6 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
-
-	demodevopsiov1alpha1 "my.demo/ResourceQuota-AutoScaling/api/v1alpha1"
-	"my.demo/ResourceQuota-AutoScaling/controllers"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -44,7 +43,7 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
-	utilruntime.Must(demodevopsiov1alpha1.AddToScheme(scheme))
+	utilruntime.Must(v1alpha1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -78,7 +77,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err = (&controllers.ResourcequotaAutoscalingReconciler{
+	if err = (&controllers2.ResourcequotaAutoscalingReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {

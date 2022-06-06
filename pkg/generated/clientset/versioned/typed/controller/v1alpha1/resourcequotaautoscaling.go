@@ -10,9 +10,8 @@ import (
 	"my.demo/ResourceQuota-AutoScaling/pkg/api/v1alpha1"
 )
 
-
 type ResourcesQuotaAutoScalingGetter interface {
-	
+	ResourcesQuotaAutoScaling(namespace string) ResourcesQuotaAutoScalingInterface
 }
 
 type ResourcesQuotaAutoScalingInterface interface {
@@ -26,13 +25,12 @@ type ResourcesQuotaAutoScalingInterface interface {
 	Patch(ct context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (*v1alpha1.ResourcequotaAutoscaling, error)
 }
 
-
 type ResourcesQuotaAutoScaling struct {
 	client rest.Interface
-	ns string
+	ns     string
 }
 
-func (s *ResourcesQuotaAutoScaling) Create(ctx context.Context, resourcesQuotaAutoScaling *v1alpha1.ResourcequotaAutoscaling, opts metav1.CreateOptions) (result *v1alpha1.ResourcequotaAutoscaling, err error)  {
+func (s *ResourcesQuotaAutoScaling) Create(ctx context.Context, resourcesQuotaAutoScaling *v1alpha1.ResourcequotaAutoscaling, opts metav1.CreateOptions) (result *v1alpha1.ResourcequotaAutoscaling, err error) {
 	result = &v1alpha1.ResourcequotaAutoscaling{}
 	err = s.client.Post().
 		Namespace(s.ns).
@@ -44,6 +42,6 @@ func (s *ResourcesQuotaAutoScaling) Create(ctx context.Context, resourcesQuotaAu
 	return
 }
 
-func (s *ResourcesQuotaAutoScaling) Update(ctx context.Context, resourcesQuotaAutoScaling *v1alpha1.ResourcequotaAutoscaling, opts metav1.UpdateOptions) (*v1alpha1.ResourcequotaAutoscaling, error)  {
+func (s *ResourcesQuotaAutoScaling) Update(ctx context.Context, resourcesQuotaAutoScaling *v1alpha1.ResourcequotaAutoscaling, opts metav1.UpdateOptions) (*v1alpha1.ResourcequotaAutoscaling, error) {
 
 }
