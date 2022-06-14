@@ -17,8 +17,9 @@ limitations under the License.
 package v1alpha1
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"time"
+
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -32,6 +33,7 @@ type ResourcequotaAutoscalingSpec struct {
 	// Foo is an example field of ResourcequotaAutoscaling. Edit resourcequotaautoscaling_types.go to remove/update
 	ScaleTargetRef *ScaleTargetRef `json:"scaleTargetRef,omitempty"`
 	MaxScaleCount int              `json:"maxScaleCount,omitempty"`
+	Rollout	bool	`json:"rollout,omitempty"`
 	ScaleResources *ScaleResources `json:"scaleResources,omitempty"`
 }
 
@@ -40,9 +42,8 @@ type ResourcequotaAutoscalingStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 	Message string                 `json:"message,omitempty"`
-	Status bool                    `json:"status,omitempty"`
-	BeforeIncrease *BeforeIncrease `json:"beforeIncrease,omitempty"`
-	AfterIncrease *AfterIncrease   `json:"afterIncrease,omitempty"`
+	Status string                    `json:"status,omitempty"`
+	Increase *Increase `json:"increase,omitempty"`
 
 }
 
@@ -77,6 +78,13 @@ type ScaleResources struct {
 	CPU uint64 `json:"cpu"`
 	Memory uint64 `json:"memory"`
 }
+
+type Increase struct {
+	BeforeIncrease *BeforeIncrease `json:"beforeIncrease,omitempty"`
+	AfterIncrease *AfterIncrease   `json:"afterIncrease,omitempty"`
+	Time time.Duration `json:"time,omitempty"`
+}
+
 type AfterIncrease struct {
 	CPU uint64 `json:"cpu,omitempty"`
 	Memory uint64 `json:"memory,omitempty"`
@@ -85,7 +93,6 @@ type AfterIncrease struct {
 type BeforeIncrease struct {
 	CPU uint64 `json:"cpu,omitempty"`
 	Memory uint64 `json:"memory,omitempty"`
-	TimeStamp time.Duration `json:"timeStamp,omitempty"`
 }
 
 func init() {

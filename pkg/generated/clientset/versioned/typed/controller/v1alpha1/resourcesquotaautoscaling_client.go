@@ -11,5 +11,5 @@ type Interface interface {
 }
 
 type ResourcesQuotaAUtoScalingClient struct {
-	restClient rest.Interface
+	RESTClient rest.Interface
 }
